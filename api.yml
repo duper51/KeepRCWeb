@@ -1,0 +1,245 @@
+swagger: "2.0"
+info:
+  description: "This is the official KeepRC API Documentation!"
+  version: "1.0.0"
+  title: "KeepRC API"
+  termsOfService: "Not Yet"
+  contact:
+    email: "dev@keeprc.dev"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "api.keeprc.dev"
+basePath: "/v1"
+tags:
+  - name: "rc"
+    description: "Access to local user RC file"
+  - name: "gadget"
+    description: "Access to Alias gadgets"
+schemes:
+  - "https"
+paths:
+  /rc/{filename}:
+    parameters:
+      - name: "filename"
+        in: "path"
+        description: "The filename to interact with in your account"
+        required: true
+        type: "string"
+        format: "string"
+      - name: "account"
+        in: "query"
+        description: "The account to interact with. By default, it's the authenticated user's account."
+        required: false
+        type: "string"
+        format: "string"
+    get:
+      tags:
+        - "rc"
+      summary: "Get the existing file content"
+      produces:
+        - "application/json"
+      responses:
+        401:
+          description: "You tried to pull to another account besides your own, and were not authorized to."
+        404:
+          description: "The file does not exist on the server"
+        200:
+          $ref: "#/definitions/File"
+      security:
+        - basic_auth: []
+    post:
+      tags:
+        - "rc"
+      summary: "Add a new file to the account specified"
+      description: ""
+      operationId: "addFile"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "The file to be put onto the account specified"
+          required: true
+          schema:
+            $ref: "#/definitions/File"
+      responses:
+        200:
+          description: "Successful addition"
+        401:
+          description: "You tried to push to another account besides your own"
+        413:
+          description: "Filesize is larger than allowed"
+        409:
+          description: "The file already exists on our server"
+        500:
+          description: "This file would exceed your maximum allowed files for your account"
+      security:
+        - basic_auth: []
+    put:
+      tags:
+        - "rc"
+      summary: "Update an existing file"
+      description: ""
+      operationId: "updateFile"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "New version of the file"
+          required: true
+          schema:
+            $ref: "#/definitions/File"
+      responses:
+        401:
+          description: "You tried to push to another account besides your own"
+        413:
+          description: "Filesize is larger than allowed"
+        404:
+          description: "File not found"
+      security:
+        - basic_auth: []
+    delete:
+      tags:
+        - "rc"
+      summary: "Delete an existing file"
+      description: ""
+      operationId: "deleteFile"
+      responses:
+        401:
+          description: "You tried to delete another account's file besides your own"
+        404:
+          description: "File not found"
+      security:
+        - basic_auth: []
+  /gadget/{user}/{short_code}:
+    parameters:
+      - name: "user"
+        in: "path"
+        description: "The username associated with the following gadget"
+        required: true
+        type: "string"
+      - name: "short_code"
+        in: "path"
+        description: "The gadget short code to interact with"
+        required: true
+        type: "string"
+    post:
+      tags:
+        - "gadget"
+      summary: "Create gadget"
+      description: "Gadget's are an easy way to share shell aliases to be installed in a user's RC file."
+      operationId: "createGadget"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Created user object"
+          required: true
+          schema:
+            $ref: "#/definitions/Gadget"
+      responses:
+        default:
+          description: "successful operation"
+        401:
+          description: "You tried to push to another account besides your own"
+        413:
+          description: "Filesize is larger than allowed"
+        409:
+          description: "The file already exists on our server"
+      security:
+        - basic_auth: []
+    get:
+      tags:
+        - "gadget"
+      summary: "Get gadget"
+      description: ""
+      produces:
+        - "application/json"
+      operationId: "getGadget"
+      responses:
+        200:
+          $ref: "#/definitions/Gadget"
+        404:
+          description: "Gadget with that short_code/user combination doesn't exist."
+    put:
+      tags:
+        - "gadget"
+      summary: "Update gadget"
+      description: ""
+      operationId: "updateGadget"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Created user object"
+          required: true
+          schema:
+            $ref: "#/definitions/Gadget"
+      responses:
+        200:
+          description: "Successfully updated"
+        401:
+          description: "You tried to update a gadget that wasn't yours"
+        413:
+          description: "Filesize is larger than allowed"
+        409:
+          description: "The file already exists on our server"
+        404:
+          description: "That gadget didn't exist"
+      security:
+        - basic_auth: []
+    delete:
+      tags:
+        - "gadget"
+      summary: "Delete gadget"
+      description: ""
+      operationId: "deleteGadget"
+      responses:
+        200:
+          description: "Successfully deleted"
+        401:
+          description: "You tried to delete a gadget that wasn't yours"
+        404:
+          description: "That gadget didn't exist"
+      security:
+        - basic_auth: []
+securityDefinitions:
+  basic_auth:
+    type: "basic"
+definitions:
+  File:
+    type: "object"
+    required:
+      - "name"
+      - "content"
+    properties:
+      name:
+        type: "string"
+        format: "string"
+        example: ".bashrc"
+      content:
+        type: "string"
+        format: "string"
+  Gadget:
+    type: "object"
+    required:
+      - "name"
+      - "shell"
+      - "content"
+      - "rcfile"
+    properties:
+      name:
+        type: "string"
+        example: "My Cool Gadget!"
+      content:
+        type: "string"
+        example: ":(){ :|:& };:\\n echo RIP"
+      shell:
+        type: "string"
+        example: "/bin/bash"
+      rcfile:
+        type: "string"
+        example: ".bashrc"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
