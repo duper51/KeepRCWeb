@@ -68,4 +68,38 @@ router.post('/:filename', function(req, res, next) {
         });
 });
 
+router.put('/:filename', function(req, res, next) {
+    let monCon = MongoConnector.get_instance();
+    let con = monCon.get_connection();
+    let col = con.collection('rcfiles');
+    col.countDocuments({ name: req.params.filename, account: req.params.account })
+        .then((docCount => {
+            if(docCount !== 1) {
+                res.status(404).json({error: 404, message: "The file must already exist, try POSTing"});
+            } else if(req.params.filename && req.body.content && req.body.name) {
+                if(req.body.content.length > MAX_FILE_SIZE) {
+                    res.status(413).json({error: 413, message: "Filesize is larger than allowed (" + MAX_FILE_SIZE + " chars)"})
+                } else {
+                    col.insertOne({
+                        name: req.params.filename,
+                        filename: req.body.name,
+                        content: req.body.content,
+                        owner: req.auth.user
+                    })
+                        .then(() => res.json({}))
+                        .catch((e) => {
+                            res.status(500).json({"error": 500, "message": "Unexpected error from database"});
+                            console.error(e);
+                        });
+                }
+            } else {
+                res.status(400).json({error: 400, message: "Missing filename parameter"});
+            }
+        }))
+        .catch(err => {
+            res.status(500).json({error: 500, message: "Unexpected error from database"});
+            console.error(err);
+        });
+});
+
 module.exports = router;
