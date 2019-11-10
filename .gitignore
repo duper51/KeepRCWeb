@@ -62,3 +62,5 @@ typings/
 
 # remove PhpStorm crap
 .idea
+
+config.js

@@ -24,6 +24,8 @@ const server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
+let MongoConnector = require('../lib/MongoConnector');
+MongoConnector.get_instance();
 
 server.listen(port);
 server.on('error', onError);

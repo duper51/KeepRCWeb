@@ -210,7 +210,7 @@ definitions:
   File:
     type: "object"
     required:
-      - "name"
+      - "filename"
       - "content"
     properties:
       name:
@@ -240,6 +240,3 @@ definitions:
       rcfile:
         type: "string"
         example: ".bashrc"
-externalDocs:
-  description: "Find out more about Swagger"
-  url: "http://swagger.io"
