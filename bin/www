@@ -24,8 +24,9 @@ const server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-let MongoConnector = require('../lib/MongoConnector');
-MongoConnector.get_instance();
+let config = require("../config");
+const mongoose = require('mongoose');
+mongoose.connect(config.mongo.url + "/" + config.mongo.db, { useNewUrlParser: true, useUnifiedTopology: true });
 
 server.listen(port);
 server.on('error', onError);
