@@ -8,7 +8,10 @@
 <body>
 <div class="container">
     <h1>KeepRC API</h1>
-    <p class="sw-info">Base URL: <span class="sw-info-basePath">/v1</span>, Version: <span class="sw-info-version">1.0.0</span></p>
+    <p class="sw-info">
+        Base URL: <span class="sw-info-basePath">/v1</span>,
+        Version: <span class="sw-info-version">1.0.0</span>
+    </p>
     <p><p>This is the official KeepRC API Documentation!</p>
     </p>
     
@@ -23,7 +26,8 @@
             <h3 id="tag-rc" class="swagger-summary-tag">Tag: rc</h3>
             <p>Access to local user RC file</p>
         
-        
+            <p class="sw-tag-external-doc">
+            </p>
             <table class="table table-bordered table-condensed swagger--summary">
                 <thead>
                 <tr>
@@ -57,7 +61,8 @@
             <h3 id="tag-gadget" class="swagger-summary-tag">Tag: gadget</h3>
             <p>Access to Alias gadgets</p>
         
-        
+            <p class="sw-tag-external-doc">
+            </p>
             <table class="table table-bordered table-condensed swagger--summary">
                 <thead>
                 <tr>
@@ -67,22 +72,22 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><a href="#operation--gadget--user---short_code--post">POST /gadget/{user}/{short_code}</a></td>
+                        <td><a href="#operation--gadget--short_code--post">POST /gadget/{short_code}</a></td>
                         <td><p>Create gadget</p>
         </td>
                     </tr>
                     <tr>
-                        <td><a href="#operation--gadget--user---short_code--get">GET /gadget/{user}/{short_code}</a></td>
+                        <td><a href="#operation--gadget--short_code--get">GET /gadget/{short_code}</a></td>
                         <td><p>Get gadget</p>
         </td>
                     </tr>
                     <tr>
-                        <td><a href="#operation--gadget--user---short_code--put">PUT /gadget/{user}/{short_code}</a></td>
+                        <td><a href="#operation--gadget--short_code--put">PUT /gadget/{short_code}</a></td>
                         <td><p>Update gadget</p>
         </td>
                     </tr>
                     <tr>
-                        <td><a href="#operation--gadget--user---short_code--delete">DELETE /gadget/{user}/{short_code}</a></td>
+                        <td><a href="#operation--gadget--short_code--delete">DELETE /gadget/{short_code}</a></td>
                         <td><p>Delete gadget</p>
         </td>
                     </tr>
@@ -109,11 +114,11 @@
     <h2>Paths</h2>
     
         
-        <span id="path--gadget--user---short_code-"></span>
-            <div id="operation--gadget--user---short_code--delete" class="swagger--panel-operation-delete panel">
+        <span id="path--gadget--short_code-"></span>
+            <div id="operation--gadget--short_code--delete" class="swagger--panel-operation-delete panel">
                 <div class="panel-heading">
                     <div class="operation-summary">Delete gadget</div>
-                    <h3 class="panel-title"><span class="operation-name">DELETE</span> <strong>/gadget/{user}/{short_code}</strong></h3>
+                    <h3 class="panel-title"><span class="operation-name">DELETE</span> <strong>/gadget/{short_code}</strong></h3>
                         Tags:
                             <a href="#tag-gadget">gadget</a>
                 </div>
@@ -121,6 +126,7 @@
                     <section class="sw-operation-description">
                         
                     </section>
+            
                     
                         <section class="sw-request-params">
                             <table class="table">
@@ -136,22 +142,8 @@
                                 <tbody>
                                         <tr>
                                             <td>
-                                                user
-                                            <td><p>The username associated with the following gadget</p>
-                                        </td>
-                                            <td>path</td>
-                                            <td>
-                                        <span class="json-property-type">string</span>
-                                        <span class="json-property-range" title="Value limits"></span>
-                                        
-                                            </td>
-                                            <td>
-                                                    <span class="json-property-required"></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
                                                 short_code
+                                            </td>
                                             <td><p>The gadget short code to interact with</p>
                                         </td>
                                             <td>path</td>
@@ -242,10 +234,11 @@
                             </table>
                         </section>
                 </div>
-            </div>    <div id="operation--gadget--user---short_code--get" class="swagger--panel-operation-get panel">
+            </div>
+            <div id="operation--gadget--short_code--get" class="swagger--panel-operation-get panel">
                 <div class="panel-heading">
                     <div class="operation-summary">Get gadget</div>
-                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/gadget/{user}/{short_code}</strong></h3>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/gadget/{short_code}</strong></h3>
                         Tags:
                             <a href="#tag-gadget">gadget</a>
                 </div>
@@ -253,6 +246,7 @@
                     <section class="sw-operation-description">
                         
                     </section>
+            
                     
                         <section class="sw-request-params">
                             <table class="table">
@@ -268,22 +262,8 @@
                                 <tbody>
                                         <tr>
                                             <td>
-                                                user
-                                            <td><p>The username associated with the following gadget</p>
-                                        </td>
-                                            <td>path</td>
-                                            <td>
-                                        <span class="json-property-type">string</span>
-                                        <span class="json-property-range" title="Value limits"></span>
-                                        
-                                            </td>
-                                            <td>
-                                                    <span class="json-property-required"></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
                                                 short_code
+                                            </td>
                                             <td><p>The gadget short code to interact with</p>
                                         </td>
                                             <td>path</td>
@@ -342,10 +322,11 @@
                             </dl>
                         </section>
                 </div>
-            </div>    <div id="operation--gadget--user---short_code--post" class="swagger--panel-operation-post panel">
+            </div>
+            <div id="operation--gadget--short_code--post" class="swagger--panel-operation-post panel">
                 <div class="panel-heading">
                     <div class="operation-summary">Create gadget</div>
-                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/gadget/{user}/{short_code}</strong></h3>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/gadget/{short_code}</strong></h3>
                         Tags:
                             <a href="#tag-gadget">gadget</a>
                 </div>
@@ -354,6 +335,7 @@
                         <p>Gadget&#39;s are an easy way to share shell aliases to be installed in a user&#39;s RC file.</p>
             
                     </section>
+            
                         
                             <section class="sw-request-body">
                                 
@@ -384,22 +366,8 @@
                                 <tbody>
                                         <tr>
                                             <td>
-                                                user
-                                            <td><p>The username associated with the following gadget</p>
-                                        </td>
-                                            <td>path</td>
-                                            <td>
-                                        <span class="json-property-type">string</span>
-                                        <span class="json-property-range" title="Value limits"></span>
-                                        
-                                            </td>
-                                            <td>
-                                                    <span class="json-property-required"></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
                                                 short_code
+                                            </td>
                                             <td><p>The gadget short code to interact with</p>
                                         </td>
                                             <td>path</td>
@@ -507,10 +475,11 @@
                             </table>
                         </section>
                 </div>
-            </div>    <div id="operation--gadget--user---short_code--put" class="swagger--panel-operation-put panel">
+            </div>
+            <div id="operation--gadget--short_code--put" class="swagger--panel-operation-put panel">
                 <div class="panel-heading">
                     <div class="operation-summary">Update gadget</div>
-                    <h3 class="panel-title"><span class="operation-name">PUT</span> <strong>/gadget/{user}/{short_code}</strong></h3>
+                    <h3 class="panel-title"><span class="operation-name">PUT</span> <strong>/gadget/{short_code}</strong></h3>
                         Tags:
                             <a href="#tag-gadget">gadget</a>
                 </div>
@@ -518,6 +487,7 @@
                     <section class="sw-operation-description">
                         
                     </section>
+            
                         
                             <section class="sw-request-body">
                                 
@@ -548,22 +518,8 @@
                                 <tbody>
                                         <tr>
                                             <td>
-                                                user
-                                            <td><p>The username associated with the following gadget</p>
-                                        </td>
-                                            <td>path</td>
-                                            <td>
-                                        <span class="json-property-type">string</span>
-                                        <span class="json-property-range" title="Value limits"></span>
-                                        
-                                            </td>
-                                            <td>
-                                                    <span class="json-property-required"></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
                                                 short_code
+                                            </td>
                                             <td><p>The gadget short code to interact with</p>
                                         </td>
                                             <td>path</td>
@@ -688,7 +644,8 @@
                             </table>
                         </section>
                 </div>
-            </div>    
+            </div>
+        
         <span id="path--rc--filename-"></span>
             <div id="operation--rc--filename--delete" class="swagger--panel-operation-delete panel">
                 <div class="panel-heading">
@@ -701,6 +658,7 @@
                     <section class="sw-operation-description">
                         
                     </section>
+            
                     
                         <section class="sw-request-params">
                             <table class="table">
@@ -717,6 +675,7 @@
                                         <tr>
                                             <td>
                                                 filename
+                                            </td>
                                             <td><p>The filename to interact with in your account</p>
                                         </td>
                                             <td>path</td>
@@ -732,6 +691,7 @@
                                         <tr>
                                             <td>
                                                 account
+                                            </td>
                                             <td><p>The account to interact with. By default, it&#39;s the authenticated user&#39;s account.</p>
                                         </td>
                                             <td>query</td>
@@ -804,7 +764,8 @@
                             </table>
                         </section>
                 </div>
-            </div>    <div id="operation--rc--filename--get" class="swagger--panel-operation-get panel">
+            </div>
+            <div id="operation--rc--filename--get" class="swagger--panel-operation-get panel">
                 <div class="panel-heading">
                     <div class="operation-summary">Get the existing file content</div>
                     <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/rc/{filename}</strong></h3>
@@ -815,6 +776,7 @@
                     <section class="sw-operation-description">
                         
                     </section>
+            
                     
                         <section class="sw-request-params">
                             <table class="table">
@@ -831,6 +793,7 @@
                                         <tr>
                                             <td>
                                                 filename
+                                            </td>
                                             <td><p>The filename to interact with in your account</p>
                                         </td>
                                             <td>path</td>
@@ -846,6 +809,7 @@
                                         <tr>
                                             <td>
                                                 account
+                                            </td>
                                             <td><p>The account to interact with. By default, it&#39;s the authenticated user&#39;s account.</p>
                                         </td>
                                             <td>query</td>
@@ -937,7 +901,8 @@
                             </table>
                         </section>
                 </div>
-            </div>    <div id="operation--rc--filename--post" class="swagger--panel-operation-post panel">
+            </div>
+            <div id="operation--rc--filename--post" class="swagger--panel-operation-post panel">
                 <div class="panel-heading">
                     <div class="operation-summary">Add a new file to the account specified</div>
                     <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/rc/{filename}</strong></h3>
@@ -948,6 +913,7 @@
                     <section class="sw-operation-description">
                         
                     </section>
+            
                         
                             <section class="sw-request-body">
                                 
@@ -979,6 +945,7 @@
                                         <tr>
                                             <td>
                                                 filename
+                                            </td>
                                             <td><p>The filename to interact with in your account</p>
                                         </td>
                                             <td>path</td>
@@ -994,6 +961,7 @@
                                         <tr>
                                             <td>
                                                 account
+                                            </td>
                                             <td><p>The account to interact with. By default, it&#39;s the authenticated user&#39;s account.</p>
                                         </td>
                                             <td>query</td>
@@ -1117,7 +1085,8 @@
                             </table>
                         </section>
                 </div>
-            </div>    <div id="operation--rc--filename--put" class="swagger--panel-operation-put panel">
+            </div>
+            <div id="operation--rc--filename--put" class="swagger--panel-operation-put panel">
                 <div class="panel-heading">
                     <div class="operation-summary">Update an existing file</div>
                     <h3 class="panel-title"><span class="operation-name">PUT</span> <strong>/rc/{filename}</strong></h3>
@@ -1128,6 +1097,7 @@
                     <section class="sw-operation-description">
                         
                     </section>
+            
                         
                             <section class="sw-request-body">
                                 
@@ -1161,6 +1131,7 @@
                                         <tr>
                                             <td>
                                                 filename
+                                            </td>
                                             <td><p>The filename to interact with in your account</p>
                                         </td>
                                             <td>path</td>
@@ -1176,6 +1147,7 @@
                                         <tr>
                                             <td>
                                                 account
+                                            </td>
                                             <td><p>The account to interact with. By default, it&#39;s the authenticated user&#39;s account.</p>
                                         </td>
                                             <td>query</td>
@@ -1268,6 +1240,7 @@
                         </section>
                 </div>
             </div>
+    
      
     
                        
@@ -1294,7 +1267,6 @@
                                                     <span class="json-property-type">string</span>    <span class="json-property-format">(string)</span>
                                                     <span class="json-property-range" title="Value limits"></span>
                                                     
-                                                        <span class="json-property-required"></span>
                                                 </dt>
                                                 <dd>
                                                     

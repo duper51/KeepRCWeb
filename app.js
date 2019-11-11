@@ -6,6 +6,7 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const rcRouter = require('./routes/rc');
+const gadgetRouter = require('./routes/gadget');
 
 const app = express();
 
@@ -16,5 +17,6 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/rc', rcRouter);
+app.use('/gadget', gadgetRouter);
 
 module.exports = app;

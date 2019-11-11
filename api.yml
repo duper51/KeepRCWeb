@@ -113,13 +113,8 @@ paths:
           description: "File not found"
       security:
         - basic_auth: []
-  /gadget/{user}/{short_code}:
+  /gadget/{short_code}:
     parameters:
-      - name: "user"
-        in: "path"
-        description: "The username associated with the following gadget"
-        required: true
-        type: "string"
       - name: "short_code"
         in: "path"
         description: "The gadget short code to interact with"
